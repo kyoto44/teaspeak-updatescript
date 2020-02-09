@@ -23,7 +23,7 @@ echo "# Removing old backup if exits"
 rm backupTS.tar.gz
 
 echo "# Creating full backup"
-tar -czvf backupTS.tar.gz .
+tar -czf backupTS.tar.gz .
 
 echo "# Backing up config and database"
 cp config.yml config.yml.old
