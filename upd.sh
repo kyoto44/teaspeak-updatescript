@@ -1,13 +1,13 @@
 #!/bin/bash
-echo "# TeaSpeak Updater by essemX (github.com/essemX/teaspeak-updatescript)"
+echo "# TeaSpeak Updater"
 
 if [ `getconf LONG_BIT` = "64" ]
 then
         echo "# Detected an 64 bit environment"
 		echo "# Getting version..."
-		version=$(curl -s -S -k https://repo.teaspeak.de/server/linux/amd64/latest)
+		version=$(curl -s -S -k https://repo.teaspeak.de/server/linux/amd64_optimized/latest)
 		echo "# Newest version is ${version}"
-        requesturl="https://repo.teaspeak.de/server/linux/amd64/TeaSpeak-${version}.tar.gz"
+        requesturl="https://repo.teaspeak.de/server/linux/amd64_optimized/TeaSpeak-${version}.tar.gz"
 else
         echo "# Detected an 32 bit environment"
 		echo "# Getting version..."
@@ -31,3 +31,6 @@ echo "# Making scripts executable"
 chmod u+x *.sh
 
 echo "# TeaSpeak should be now updated to ${version}"
+
+echo "# Restarting TeaSpeak!"
+./teastart.sh restart
