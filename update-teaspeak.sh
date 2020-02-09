@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "# TeaSpeak Updater"
+echo "# TeaSpeak Updater by @essemX and edited by @kyoto44"
 
 if [ `getconf LONG_BIT` = "64" ]
 then
@@ -19,6 +19,12 @@ fi
 echo "# Downloading ${requesturl}"
 curl -s -S "$requesturl" -o updatefile.tar.gz
 
+echo "# Removing old backup if exits"
+rm backupTS.tar.gz
+
+echo "# Creating full backup"
+tar -czvf backupTS.tar.gz .
+
 echo "# Backing up config and database"
 cp config.yml config.yml.old
 cp TeaData.sqlite TeaData.sqlite.old
@@ -34,3 +40,4 @@ echo "# TeaSpeak should be now updated to ${version}"
 
 echo "# Restarting TeaSpeak!"
 ./teastart.sh restart
+
